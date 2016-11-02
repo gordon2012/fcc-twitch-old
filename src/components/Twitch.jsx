@@ -7,26 +7,33 @@ export const Twitch = React.createClass({
         return this.props.list || [];
     },
 
+    handleClick: function(entry) {
+        this.props.selectUser(entry);
+    },
+
     render: function() {
+        const {user} = this.props;
         return <div className="twitch">
             <div className="list">
                 <h3>List:</h3>
-                {this.getList().map(entry =>
-                    <span key={entry} style={{'paddingRight': '8px'}}>{entry}</span>
+                {this.getList().map( entry =>
+                    <button key={entry} onClick={() => this.handleClick(entry)}>{entry}</button>
                 )}
             </div>
-
-            <div className='users'>
-                <h3>Users:</h3>
-            </div>
-
+            {user &&
+                <div className='users'>
+                    <h3>User:</h3>
+                    <h4>{this.props.user}</h4>
+                </div>
+            }
         </div>;
     }
 });
 
 function mapStateToProps(state) {
     return {
-        list: state.list
+        list: state.list,
+        user: state.user
     }
 }
 

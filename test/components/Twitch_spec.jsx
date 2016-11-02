@@ -12,7 +12,7 @@ describe('Twitch', () => {
         const component = renderIntoDocument(
             <Twitch list={["freecodecamp", "medrybw"]} />
         );
-        const headers = scryRenderedDOMComponentsWithTag(component, 'span');
+        const headers = scryRenderedDOMComponentsWithTag(component, 'button');
 
         expect(headers.length).to.equal(2);
         expect(headers[0].textContent).to.equal('freecodecamp');

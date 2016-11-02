@@ -1,17 +1,15 @@
 import {expect} from 'chai';
-
 import reducer from '../src/reducer';
+import {setState} from '../src/action_creators';
 
 describe('reducer', () => {
 
     it('handles SET_STATE', () => {
         const initialState = {};
-        const action = {
-            type: 'SET_STATE',
-            state: {
-                list: ['freecodecamp', 'medrybw']
-            }
-        };
+        const action = setState({
+            list: ['freecodecamp', 'medrybw']
+        });
+
         const nextState = reducer(initialState, action);
 
         expect(nextState).to.deep.equal({
@@ -20,12 +18,10 @@ describe('reducer', () => {
     });
 
     it('handles SET_STATE without initial state', () => {
-        const action = {
-            type: 'SET_STATE',
-            state: {
-                list: ['freecodecamp', 'medrybw']
-            }
-        };
+        const action = setState({
+            list: ['freecodecamp', 'medrybw']
+        });
+
         const nextState = reducer(undefined, action);
 
         expect(nextState).to.deep.equal({
