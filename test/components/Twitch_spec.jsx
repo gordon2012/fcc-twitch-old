@@ -4,7 +4,7 @@ import {
     renderIntoDocument,
     scryRenderedDOMComponentsWithTag
 } from 'react-addons-test-utils';
-import Twitch from '../../src/components/Twitch';
+import {Twitch} from '../../src/components/Twitch';
 import {expect} from 'chai';
 
 describe('Twitch', () => {
@@ -12,7 +12,7 @@ describe('Twitch', () => {
         const component = renderIntoDocument(
             <Twitch list={["freecodecamp", "medrybw"]} />
         );
-        const headers = scryRenderedDOMComponentsWithTag(component, 'h1');
+        const headers = scryRenderedDOMComponentsWithTag(component, 'span');
 
         expect(headers.length).to.equal(2);
         expect(headers[0].textContent).to.equal('freecodecamp');
