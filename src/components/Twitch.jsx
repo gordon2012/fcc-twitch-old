@@ -8,11 +8,11 @@ export const Twitch = React.createClass({
     },
 
     handleClick: function(entry) {
-        this.props.selectUser(entry);
+        this.props.fetchUserData(entry);
     },
 
     render: function() {
-        const {user} = this.props;
+        const {list, users} = this.props;
         return <div className="twitch">
             <div className="list">
                 <h3>List:</h3>
@@ -20,10 +20,23 @@ export const Twitch = React.createClass({
                     <button key={entry} onClick={() => this.handleClick(entry)}>{entry}</button>
                 )}
             </div>
-            {user &&
+            {users &&
                 <div className='users'>
-                    <h3>User:</h3>
-                    <h4>{this.props.user}</h4>
+                    <h3>Users:</h3>
+                    <ul>
+                        {list.map((user, i) =>
+                            <li key={i} style={{'border': '1px solid black', 'marginBottom': '4px'}}>
+                                {user in users ?
+                                    <div>
+                                        <h4>{users[user].display_name}</h4>
+                                        <p>{users[user].bio}</p>
+                                    </div>
+                                :
+                                    <p>Loading...</p>
+                                }
+                            </li>
+                        )}
+                    </ul>
                 </div>
             }
         </div>;
@@ -33,7 +46,7 @@ export const Twitch = React.createClass({
 function mapStateToProps(state) {
     return {
         list: state.list,
-        user: state.user
+        users: state.users
     }
 }
 

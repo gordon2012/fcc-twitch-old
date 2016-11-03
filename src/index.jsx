@@ -17,7 +17,7 @@ const store = createStore(
 );
 
 store.dispatch(setState({
-    list: ['ESL_SC2', 'OgamingSC2', 'cretetion', 'freecodecamp', 'storbeck', 'habathcx', 'RobotCaleb', 'noobs2ninjas', 'medrybw']
+    list: ['ESL_SC2', 'freecodecamp', 'medrybw']
 }));
 
 ReactDOM.render(
