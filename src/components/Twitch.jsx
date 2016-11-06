@@ -20,12 +20,6 @@ export const Twitch = React.createClass({
             [];
 
         return <div className="twitch">
-            <div className="list">
-                <h3>List:</h3>
-                {this.getList().map( entry =>
-                    <button key={entry} onClick={() => this.handleClick(entry)}>{entry}</button>
-                )}
-            </div>
             <div className='users'>
                 <h3>Users:</h3>
                 <ul>

@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import {Provider} from 'react-redux';
 import reducer from './reducer';
-import {setState} from './action_creators';
+import {setState, fetchUserData} from './action_creators';
 import App from './components/App';
 
 const store = createStore(
@@ -19,6 +19,8 @@ const store = createStore(
 store.dispatch(setState({
     list: ['ESL_SC2', 'freecodecamp', 'medrybw']
 }));
+
+store.getState().list.forEach((e) => {store.dispatch(fetchUserData(e))});
 
 ReactDOM.render(
   <Provider store={store}>
