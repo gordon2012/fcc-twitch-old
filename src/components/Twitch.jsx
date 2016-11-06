@@ -1,9 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import * as actionCreators from '../action_creators';
-
 import Entry from './Entry';
-
 
 export const Twitch = React.createClass({
     getList: function() {
@@ -15,7 +13,12 @@ export const Twitch = React.createClass({
     },
 
     render: function() {
-        const {list, users} = this.props;
+        const {users} = this.props;
+        const userlist = users ?
+            Object.keys(users).map(key => users[key])
+        :
+            [];
+
         return <div className="twitch">
             <div className="list">
                 <h3>List:</h3>
@@ -23,19 +26,14 @@ export const Twitch = React.createClass({
                     <button key={entry} onClick={() => this.handleClick(entry)}>{entry}</button>
                 )}
             </div>
-            {users &&
-                <div className='users'>
-                    <h3>Users:</h3>
-                    <ul>
-                        {list.map((user, i) =>
-                            { user in users &&
-                                <Entry key={i} name={users[user].display_name} />
-                            }
-                        )}
-                    </ul>
-                </div>
-            }
-            <hr />
+            <div className='users'>
+                <h3>Users:</h3>
+                <ul>
+                    {userlist.map((user, i) =>
+                        <Entry key={i} user={user} />
+                    )}
+                </ul>
+            </div>
         </div>;
     }
 });
