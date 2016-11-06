@@ -2,6 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux'
 import * as actionCreators from '../action_creators';
 
+import Entry from './Entry';
+
+
 export const Twitch = React.createClass({
     getList: function() {
         return this.props.list || [];
@@ -25,20 +28,14 @@ export const Twitch = React.createClass({
                     <h3>Users:</h3>
                     <ul>
                         {list.map((user, i) =>
-                            <li key={i} style={{'border': '1px solid black', 'marginBottom': '4px'}}>
-                                {user in users ?
-                                    <div>
-                                        <h4>{users[user].display_name}</h4>
-                                        <p>{users[user].bio}</p>
-                                    </div>
-                                :
-                                    <p>Loading...</p>
-                                }
-                            </li>
+                            { user in users &&
+                                <Entry key={i} name={users[user].display_name} />
+                            }
                         )}
                     </ul>
                 </div>
             }
+            <hr />
         </div>;
     }
 });
