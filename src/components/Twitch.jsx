@@ -20,11 +20,11 @@ export const Twitch = React.createClass({
             [];
 
         return <div className="twitch">
-            <div className='users'>
+            <div className="users">
                 <h3>Users:</h3>
                 <ul>
                     {userlist.map((user, i) =>
-                        <Entry key={i} user={user} />
+                        <Entry className="entry" key={i} user={user} />
                     )}
                 </ul>
             </div>
