@@ -20,14 +20,16 @@ export const Twitch = React.createClass({
             [];
 
         return <div className="twitch">
+            <header>
+                <h1>Twitch.tv User Stream Viewer</h1>
+            </header>
             <div className="users">
-                <h3>Users:</h3>
-                <ul>
-                    {userlist.map((user, i) =>
-                        <Entry className="entry" key={i} user={user} />
-                    )}
-                </ul>
+                {userlist.map((user, i) =>
+                    <Entry key={i} user={user} />
+                )}
             </div>
+            <hr />
+            <pre><code>{JSON.stringify(userlist[0], null, 2)}</code></pre>
         </div>;
     }
 });

@@ -8,6 +8,8 @@ import reducer from './reducer';
 import {setState, fetchUserData} from './action_creators';
 import App from './components/App';
 
+import './sass/style.sass'
+
 const store = createStore(
   reducer,
   applyMiddleware(
