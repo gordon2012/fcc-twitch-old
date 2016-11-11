@@ -1,5 +1,5 @@
 // Action Creators
-
+//
 export function setState(state) {
     return {
         type: 'SET_STATE',
@@ -30,20 +30,42 @@ export function receiveUser(user, json) {
     }
 }
 
+export function receiveStream(user, json) {
+    return {
+        type: 'RECEIVE_STREAM',
+        user,
+        data: json,
+        receivedAt: Date.now()
+    }
+}
+
 
 // Actions
-
-export const fetchUserData = user => dispatch => {
-    dispatch(requestUser(user));
-
-    var url = `https://wind-bow.hyperdev.space/twitch-api/users/${user}`;
-
-    var cors = process.env.NODE_ENV === 'development' ?
-        `http://localhost:3001/${url}`
-    :
-        `https://gordon2012-cors-anywhere.herokuapp.com/${url}`;
-
-    return fetch(cors)
+//
+function fetchUser(user, url) {
+    return dispatch =>
+        fetch(`${url}/users/${user}`)
         .then(res => res.json())
         .then(json => dispatch(receiveUser(user, json)));
+}
+
+function fetchStream(user, url) {
+    return dispatch =>
+        fetch(`${url}/streams/${user}`)
+        .then(res => res.json())
+        .then(json => dispatch(receiveStream(user, json)));
+}
+
+export const fetchUserData = user => dispatch => {
+    var api = 'https://wind-bow.hyperdev.space/twitch-api';
+
+    var cors = process.env.NODE_ENV === 'development' ?
+        'http://localhost:3001'
+    :
+        'https://gordon2012-cors-anywhere.herokuapp.com';
+
+    return Promise.all([
+        dispatch(fetchUser(user, `${cors}/${api}`)),
+        dispatch(fetchStream(user, `${cors}/${api}`))
+    ]);
 }

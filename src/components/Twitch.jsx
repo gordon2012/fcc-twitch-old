@@ -13,9 +13,16 @@ export const Twitch = React.createClass({
     },
 
     render: function() {
-        const {users} = this.props;
-        const userlist = users ?
-            Object.keys(users).map(key => users[key])
+        const {users, streams} = this.props;
+        const userlist = typeof users !== 'undefined' ?
+            Object.keys(users).map(key => {
+                var item = users[key];
+                item.stream = typeof streams !== 'undefined' && key in streams ?
+                    streams[key]
+                :
+                    null;
+                return item;
+            })
         :
             [];
 
@@ -25,11 +32,11 @@ export const Twitch = React.createClass({
             </header>
             <div className="users">
                 {userlist.map((user, i) =>
-                    <Entry key={i} user={user} />
+                    <Entry key={i} user={user}/>
                 )}
             </div>
-            <hr />
-            <pre><code>{JSON.stringify(userlist[0], null, 2)}</code></pre>
+            {/*<hr />
+            <pre><code>{JSON.stringify(userlist, null, 2)}</code></pre>*/}
         </div>;
     }
 });
@@ -37,7 +44,8 @@ export const Twitch = React.createClass({
 function mapStateToProps(state) {
     return {
         list: state.list,
-        users: state.users
+        users: state.users,
+        streams: state.streams
     }
 }
 

@@ -6,11 +6,16 @@ export default function(state = {}, action) {
             return Object.assign({}, state, {
                 user: action.user
             });
-        // case 'REQUEST_USER':
         case 'RECEIVE_USER':
             return Object.assign({}, state, {
                 users: Object.assign({}, state.users, {
                     [action.user]: action.data
+                })
+            });
+        case 'RECEIVE_STREAM':
+            return Object.assign({}, state, {
+                streams: Object.assign({}, state.streams, {
+                    [action.user]: action.data.stream
                 })
             });
         default:
