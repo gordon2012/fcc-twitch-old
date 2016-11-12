@@ -9,6 +9,9 @@ $title-sm: 100px
 $title-md: 150px
 $title-lg: 200px
 
+$color-stream: rgb(95, 186, 125)
+$color-nostream: pink
+
 .twitch
     max-width: $break-lg
     margin: 0 auto
@@ -17,12 +20,12 @@ h1
     text-align: center
 
 .entry
-    background: pink
+    background: $color-nostream
     border: 1px solid black
     margin: 16px 0
     display: flex
     align-items: center
-    overflow: hidden
+
     img
         border-right: 1px solid black
     h3
@@ -31,7 +34,30 @@ h1
     div
         width: 100%
         border-left: 1px solid black
-        padding: 0 16px
+        padding: 0 24px 0 8px
+
+        p
+            margin-top: 8px
+            overflow: hidden
+            line-height: 1.2em
+            max-height: 2.4em
+            position: relative
+            margin-right: -1em
+            padding-right: 1em
+
+            &:before
+                position: absolute
+                content: '...'
+                right: 0
+                bottom: 0
+            &:after
+                position: absolute
+                content: ''
+                right: 0
+                width: 1em
+                height: 1em
+                margin-top: 0.2em
+                background: $color-nostream
 
 
     // Responsive
@@ -54,6 +80,8 @@ h1
         div
             height: $icon-md
             border-top: none
+            p
+                max-height: 3.6em
 
     @media screen and (min-width: $break-lg)
         flex-flow: row nowrap
@@ -64,10 +92,18 @@ h1
         div
             height: $icon-lg
             border-top: none
+            p
+                max-height: 4.8em
 
 .streaming
-    background: rgb(95, 186, 125)
+    background: $color-stream
     color: white
+
+.streaming
+    div
+        p
+            &:after
+                background: $color-stream
 
 pre
     white-space: pre-wrap

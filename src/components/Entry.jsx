@@ -11,8 +11,7 @@ export default React.createClass({
 
                 {streaming ?
                     <div>
-                        <h4>{stream.game}</h4>
-                        <p>{stream.channel.status}</p>
+                        <p><strong>{stream.game}: </strong>{stream.channel.status}</p>
                     </div>
                 :
                     <div>
