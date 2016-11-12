@@ -18,7 +18,7 @@ const store = createStore(
 );
 
 store.dispatch(setState({
-    list: ['ESL_SC2', 'freecodecamp', 'medrybw', 'storbeck', 'habathcx',  'OgamingSC2', 'cretetion', 'RobotCaleb', 'noobs2ninjas', 'monstercat']
+    list: ['ESL_SC2', 'freecodecamp', 'medrybw', 'storbeck', 'habathcx',  'OgamingSC2', 'cretetion', 'RobotCaleb', 'noobs2ninjas', 'monstercat', 'brunofin', 'comster404']
 }));
 
 store.getState().list.forEach((e) => {store.dispatch(fetchUserData(e))});

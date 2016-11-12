@@ -11,6 +11,7 @@ $title-lg: 200px
 
 $color-stream: rgb(95, 186, 125)
 $color-nostream: pink
+$color-error: red
 
 .twitch
     max-width: $break-lg
@@ -98,6 +99,14 @@ h1
 .streaming
     background: $color-stream
     color: white
+
+.notfound
+    background: $color-error
+    color: white
+    div
+        p
+            &:after
+                background: $color-error
 
 .streaming
     div
