@@ -28,7 +28,7 @@ export const Twitch = React.createClass({
 
         return <div className="twitch">
             <header>
-                <h1>Twitch.tv User Stream Viewer</h1>
+                <h1>Twitch.tv Status</h1>
             </header>
             <div className="users">
                 {userlist.map((user, i) =>

@@ -1,4 +1,4 @@
-# Twitch.tv User stream status viewer
+# Twitch.tv Status
 
 This is an Intermediate Front End Development Project created for [Free Code Camp](https://freecodecamp.com).
 
