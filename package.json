@@ -69,7 +69,8 @@
     "build": "node scripts/build.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js \"test/**/*.@(js|jsx)\"",
     "test:watch": "npm run test -- --watch --watch-extensions jsx",
-    "deploy": "npm run build && gh-pages -d build"
+    "deploy": "npm run build && gh-pages -d build",
+    "cors": "node scripts/cors-anywhere/server.js"
   },
   "jest": {
     "moduleFileExtensions": [
