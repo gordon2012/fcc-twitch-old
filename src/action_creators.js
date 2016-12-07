@@ -57,7 +57,7 @@ function fetchStream(user, url) {
 }
 
 export const fetchUserData = user => dispatch => {
-    var api = 'https://wind-bow.hyperdev.space/twitch-api';
+    var api = 'https://wind-bow.gomix.me/twitch-api';
 
     var cors = process.env.NODE_ENV === 'development' ?
         'http://localhost:3001'
