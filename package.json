@@ -70,8 +70,8 @@
     "build:prod": "node scripts/build.prod.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js \"test/**/*.@(js|jsx)\"",
     "test:watch": "npm run test -- --watch --watch-extensions jsx",
-    "deploy:stage": "npm run build:stage && gh-pages -d build",
-    "deploy:prod": "npm run build:prod && surge build twitch.gordondoskas.com",
+    "deploy:stage": "npm run build:prod && surge build twitch.gurudreams.win",
+    "deploy:prod": "npm run build:stage && scp -r build/* hg:/home1/gordon2012/src/twitch",
     "cors": "node scripts/cors-anywhere/server.js"
   },
   "jest": {
@@ -102,5 +102,5 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "http://gordon2012.github.io/twitch"
+  "homepage": "http://gordondoskas.com/twitch"
 }
